@@ -1,0 +1,56 @@
+package com.example.levanhieu_2050531200143;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class Home_Activity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        ControlButton();
+    }
+    private void ControlButton(){
+
+        BottomNavigationView navigationView = findViewById(R.id.button_nav);
+        navigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case    R.id.action_home:
+
+                        Intent myintent = new Intent(Home_Activity.this,MainActivity.class);
+                        startActivity(myintent);
+                        Toast.makeText(Home_Activity.this, "Home", Toast.LENGTH_SHORT).show();
+                        break;
+                    case    R.id.action_Favorite:
+                        Intent intent = new Intent(Home_Activity.this,MainActivity2.class);
+                        startActivity(intent);
+                        Toast.makeText(Home_Activity.this, "ListView", Toast.LENGTH_SHORT).show();
+                        break;
+                    case    R.id.action_my_page:
+                        Intent hieu = new Intent(Home_Activity.this, ProFile1_Activity.class);
+                        startActivity(hieu);
+                        Toast.makeText(Home_Activity.this, "Profile", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_user:
+                        Intent van = new Intent(Home_Activity.this,User.class);
+                        startActivity(van);
+                        Toast.makeText(Home_Activity.this, "User", Toast.LENGTH_SHORT).show();
+                        break;
+                     }
+            }
+        });
+    }
+}
